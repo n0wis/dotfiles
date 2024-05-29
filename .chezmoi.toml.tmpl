@@ -1,8 +1,15 @@
-# {{- $recipient := promptString "GPG Recipient"}}
-
 [gpg]
-recipient = "{{ $recipient }}"
+recipient = {{ (passFields "chezmoi").name | quote }}
 args = ["--quiet"]
+
+{{- if lookPath "delta" }}
 
 [diff]
 pager = "delta"
+
+{{ end -}}
+
+
+[data]
+username = {{ (passFields "chezmoi").name | quote }}
+email = {{ (passFields "chezmoi").email | quote }}
