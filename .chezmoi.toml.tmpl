@@ -1,0 +1,8 @@
+# {{- $recipient := promptString "GPG Recipient"}}
+
+[gpg]
+recipient = "{{ $recipient }}"
+args = ["--quiet"]
+
+[diff]
+pager = "delta"
